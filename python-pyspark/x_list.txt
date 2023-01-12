@@ -1,0 +1,8 @@
+ID	Word
+A	Hello
+B	World
+C	How
+D	Do
+E	You
+F	Do
+G	?
