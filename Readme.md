@@ -59,11 +59,8 @@ Figure 2. Data pipeline for running a python script on AWS EMR
 
 2. A data processing solution an [AWS EMR](https://aws.amazon.com/emr/) where the above python script is exxecuted. [AWS EMR](https://aws.amazon.com/emr/) (Elastic Map reduce) is a big data on demand server. It is preconfigured with spark hadoop etc. It has a master node and ec2 intances as worker nodes. We can scale up the ec2 instances as our requirements. 
  
-3. [Amazon cloudWatch logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) to monitor, store, and access your log files from AWS lambda function and s3.
 
-
-
-### **Prepare the above PySpark script for EMR** 
+### **Prepare the above python script for EMR** 
 
 The above python script is written using pandas library and pandas has a disadvantage pandas run operations on a single machine. In this solution since we are using Apache Spark in an EMR cluster with multiple machines so we need to rewrite the python script with PySpark. PySpark is an ideal fit for our usecase with big data as it could processes operations many times(100x) faster than Pandas.I have also added a script to save the output. 
 
