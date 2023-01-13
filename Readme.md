@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
 For this Amazon AWS cloud infrastructure is used. 
 
-## **Solution 1: Data processing with Aws lamda function and uploading the data in amazon S3 bucket.** 
+## **Solution 1: Data processing with Aws lamda function and data in amazon S3 bucket.** 
  
 The main parts of this architecture we discuss are (Figure 1):
  
@@ -80,11 +80,12 @@ Figure 1. Data pipeline for running a python script on AWS lamda function.
 
 ### **Conclusion** 
 
-So solution 2 may not be ideal for this usecase which take us to solution 2. 
+Though AWS lamda function has many advantages and cost savings its is not an ideal solution for this usecase, which takes us to solution 2.
 
 
-## **Solution 2: Data processing in [amazon EMR](https://aws.amazon.com/emr/) with spark and hadoop and uploading the data in [amazon S3 bucket](https://aws.amazon.com/s3/).**
+## **Solution 2: Data processing in [amazon EMR](https://aws.amazon.com/emr/) with [apache spark](https://aws.amazon.com/big-data/what-is-spark/) with data in [amazon S3 bucket](https://aws.amazon.com/s3/).**
 
+Apache Spark is an open-source, distributed processing system used for big data workloads. It utilizes in-memory caching, and optimized query execution for fast analytic queries against data of any size. Amazon EMR is the industry-leading cloud big data platform for data processing, interactive analysis, and machine learning using open source frameworks such as Apache Spark. 
 
 The main parts of this architecture we discuss are (Figure 2):
 
@@ -99,8 +100,84 @@ Figure 2. Data pipeline for running a python script on AWS EMR
 
 
 
+### **Python script modification** 
+
+The above python script is written using pandas library and pandas has a disadvantage pandas run operations on a single machine. In this solution since we are using Apache Spark in an EMR cluster with multiple machines so we need to rewrite the python script with PySpark. PySpark is an ideal fit for our usecase with big data as it could processes operations many times(100x) faster than Pandas.
+
+```python
+
+from pyspark.sql import SparkSession
+from pyspark.sql.types import StructType, StructField, StringType
+
+
+def main():
+    """
+    Merge 2 files into 1
+
+    Usage:
+    spark-submit analysis.py
+    """
+    spark = SparkSession.builder.appName("Merge-two-files").getOrCreate()
+
+    S3_BUCKET_DATA_SOURCE_1 = 's3://DOC-EXAMPLE-BUCKET/DATA_SOURCE/x_list.txt'
+    S3_BUCKET_DATA_SOURCE_2 = 's3://DOC-EXAMPLE-BUCKET/DATA_SOURCE/y_list.txt'
+    S3_BUCKET_DATA_OUTPUT = 's3://DOC-EXAMPLE-BUCKET/DATA_OUTPUT'
+
+    x_schema = StructType([
+        StructField("ID_x", StringType(), True),
+        StructField("value_x", StringType(), True)])
+
+    y_schema = StructType([
+        StructField("ID_y", StringType(), True),
+        StructField("value_y", StringType(), True)])
+
+    x = spark.read.csv(S3_BUCKET_DATA_SOURCE_1, sep='\t',
+                       header=False, schema=x_schema)
+    y = spark.read.csv(S3_BUCKET_DATA_SOURCE_2, sep='\t',
+                       header=False, schema=y_schema)
+    res = x.join(y, x.ID_x == y.ID_y, how="left")
+    res1 = res.drop(res.ID_y)
+    res1.show()
+    
+    res1.write.parquet(S3_BUCKET_DATA_OUTPUT, mode="overwrite")
+    
+
+
+if __name__ == "__main__":
+    main()
+
+
+```
+
+### **Advantanges**
+* Cost savings especially if we use spot instances for big data. 
+* Code Deployment is easy. 
+* Integration with other AWS services
+* Scalability and flexibility
+* Reliability
+* Security
+* Monitoring
+* No data file size limit and no maximum run time like lamda function. 
 
 
 
+### ***Disadvantages**
+* Its ideal only for big data.
+* Manually deploy and start the EMR clusters. 
+* We can set the ec2 intances termination periods but if our task execution completes before the termination 
+  period we will have to manually terminate the instances to save cost.
+ 
+
+
+### **Conclusion** 
+
+AWS EMR has many advantages when it comes to big data processing as it uses apache spark with distributed system. Its has some disavantages also as its not completely severless and we will have manually start and stop the clusters. AWS EMR is a good solution for our use case. 
+
+### [**Click here for an EMR SOP**](/EMR-SOP.md).
+
+## **Solution 3: Data processing in [amazon EMR serverless](https://aws.amazon.com/emr/serverless/) with [apache spark](https://aws.amazon.com/big-data/what-is-spark/) with data in [amazon S3 bucket](https://aws.amazon.com/s3/).**
+
+
+## How would you set up the company’s cloud account to run pipelines securely and robustly?
 
 
