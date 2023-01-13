@@ -2,13 +2,15 @@ import argparse
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType
 
-def merge_two_files(data_source_1,data_source_2):
+def merge_two_files(data_source_1,data_source_2,output_uri):
     """
     Merge 2 files into 1
     
     Usage 
     
-    !spark-submit analysis.py --data_source_1 x_list.txt --data_source_2 y_list.txt
+    !spark-submit analysis.py --data_source_1 x_list.txt --data_source_2 y_list.txt --output_uri  fullpath/of/the/output/folder/to/save/result
+    
+    for example /Users/johnpaulbabu/Documents/pyspark/output
     """
     spark=SparkSession.builder.appName("merge-two-files").getOrCreate()
     
@@ -29,6 +31,7 @@ def merge_two_files(data_source_1,data_source_2):
     res = x.join(y, x.ID_x == y.ID_y, how= "left")
     res1 = res.drop(res.ID_y)
     res1.show()
+    res1.write.mode("overwrite").parquet(output_uri)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -41,6 +44,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
 
-    merge_two_files(args.data_source_1, args.data_source_2)
+    merge_two_files(args.data_source_1, args.data_source_2,args.output_uri)
 
 

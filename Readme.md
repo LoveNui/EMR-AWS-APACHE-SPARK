@@ -43,47 +43,10 @@ if __name__ == "__main__":
 ```
  
  
-## **Possible Solutions** 
-
-For this Amazon AWS cloud infrastructure is used. 
-
-## **Solution 1: Data processing with Aws lamda function and data in amazon S3 bucket.** 
- 
-The main parts of this architecture we discuss are (Figure 1):
- 
-1. A data source [amazon S3](https://aws.amazon.com/s3/) is where data files are uploaded.
- 
-2. A data processing solution an [aws lambda function](https://aws.amazon.com/lambda/) where the above python script is exxecuted. 
- 
-3. A data storage such as an [amazon S3](https://aws.amazon.com/s3/) where the results of the data processing can be stored.
- 
-4. Application integration module an [amazon event notification](https://aws.amazon.com/s3/)can monitor events happen in the S3 bucket and take actions based on those events to run a lambda function with the python script and send a email to the data scientist when a file is uploaded to s3 data source through [amazon SNS](https://aws.amazon.com/sns/) and when the results are uploaded to the s3 data storage.
- 
-5. [Amazon cloudWatch logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) to monitor, store, and access your log files from AWS lambda function and s3.
-  
-![architecture1](images/aws-s3-lamda-architecture.png)
-Figure 1. Data pipeline for running a python script on AWS lamda function.
-
-### **Advantanges**
-
-* No servers to manage 
-* Continous scaling 
-* Millisecond metering
+## **Solutions overview** 
 
 
-### **Disdvantages**
-
-* The maximum time a lambda function can run is 15 minutes.
-* Lambda function may not be able to handle big file systems like the dataset mentioned in this use case with
-  billions of rows.
-* When its comes to big data lambda functions may not be that cost effective. 
-
-### **Conclusion** 
-
-Though AWS lamda function has many advantages and cost savings its is not an ideal solution for this usecase, which takes us to solution 2.
-
-
-## **Solution 2: Data processing in [amazon EMR](https://aws.amazon.com/emr/) with [apache spark](https://aws.amazon.com/big-data/what-is-spark/) with data in [amazon S3 bucket](https://aws.amazon.com/s3/).**
+## **Data processing in [amazon EMR](https://aws.amazon.com/emr/) with [apache spark](https://aws.amazon.com/big-data/what-is-spark/) with data in [amazon S3 bucket](https://aws.amazon.com/s3/).**
 
 Apache Spark is an open-source, distributed processing system used for big data workloads. It utilizes in-memory caching, and optimized query execution for fast analytic queries against data of any size. Amazon EMR is the industry-leading cloud big data platform for data processing, interactive analysis, and machine learning using open source frameworks such as Apache Spark. 
 
@@ -100,52 +63,59 @@ Figure 2. Data pipeline for running a python script on AWS EMR
 
 
 
-### **Python script modification** 
+### **Prepare the above PySpark script for EMR** 
 
-The above python script is written using pandas library and pandas has a disadvantage pandas run operations on a single machine. In this solution since we are using Apache Spark in an EMR cluster with multiple machines so we need to rewrite the python script with PySpark. PySpark is an ideal fit for our usecase with big data as it could processes operations many times(100x) faster than Pandas.
+The above python script is written using pandas library and pandas has a disadvantage pandas run operations on a single machine. In this solution since we are using Apache Spark in an EMR cluster with multiple machines so we need to rewrite the python script with PySpark. PySpark is an ideal fit for our usecase with big data as it could processes operations many times(100x) faster than Pandas.I have also added a script to save the output. 
 
 ```python
 
+import argparse
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType
 
-
-def main():
+def merge_two_files(data_source_1,data_source_2,output_uri):
     """
     Merge 2 files into 1
-
-    Usage:
-    spark-submit analysis.py
+    
+    Usage 
+    
+    !spark-submit analysis.py --data_source_1 x_list.txt --data_source_2 y_list.txt --output_uri  fullpath/of/the/output/folder/to/save/result
+    
+    for example /Users/johnpaulbabu/Documents/pyspark/output
     """
-    spark = SparkSession.builder.appName("Merge-two-files").getOrCreate()
-
-    S3_BUCKET_DATA_SOURCE_1 = 's3://DOC-EXAMPLE-BUCKET/DATA_SOURCE/x_list.txt'
-    S3_BUCKET_DATA_SOURCE_2 = 's3://DOC-EXAMPLE-BUCKET/DATA_SOURCE/y_list.txt'
-    S3_BUCKET_DATA_OUTPUT = 's3://DOC-EXAMPLE-BUCKET/DATA_OUTPUT'
-
+    spark=SparkSession.builder.appName("merge-two-files").getOrCreate()
+    
     x_schema = StructType([
-        StructField("ID_x", StringType(), True),
-        StructField("value_x", StringType(), True)])
-
+    StructField("ID_x", StringType(), True),
+    StructField("value_x", StringType(), True)])
+    
     y_schema = StructType([
-        StructField("ID_y", StringType(), True),
-        StructField("value_y", StringType(), True)])
-
-    x = spark.read.csv(S3_BUCKET_DATA_SOURCE_1, sep='\t',
-                       header=False, schema=x_schema)
-    y = spark.read.csv(S3_BUCKET_DATA_SOURCE_2, sep='\t',
-                       header=False, schema=y_schema)
-    res = x.join(y, x.ID_x == y.ID_y, how="left")
+    StructField("ID_y", StringType(), True),
+    StructField("value_y", StringType(), True)])
+    
+    if data_source_1 is not None:
+      x = spark.read.csv(data_source_1, sep='\t',header=False,schema=x_schema)
+    
+    if data_source_2 is not None:
+      y = spark.read.csv(data_source_2, sep='\t', header=False, schema=y_schema)
+    
+    res = x.join(y, x.ID_x == y.ID_y, how= "left")
     res1 = res.drop(res.ID_y)
     res1.show()
-    
-    res1.write.parquet(S3_BUCKET_DATA_OUTPUT, mode="overwrite")
-    
-
+    res1.write.mode("overwrite").parquet(output_uri)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--data_source_1', help="The URI for your input CSV data, like an S3 bucket location.")
+    parser.add_argument(
+        '--data_source_2', help="The URI for your input CSV data, like an S3 bucket location.")
+    parser.add_argument(
+        '--output_uri', help="The URI where output is saved, like an S3 bucket location.")
+    args = parser.parse_args()
+    
 
+    merge_two_files(args.data_source_1, args.data_source_2,args.output_uri)
 
 ```
 
