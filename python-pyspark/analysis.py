@@ -8,7 +8,7 @@ def merge_two_files(data_source_1,data_source_2):
     
     Usage 
     
-    spark-submit analysis.py --data_source_1 x_list.txt --data_source_2 y_list.txt
+    !spark-submit analysis.py --data_source_1 x_list.txt --data_source_2 y_list.txt
     """
     spark=SparkSession.builder.appName("merge-two-files").getOrCreate()
     
@@ -33,13 +33,14 @@ def merge_two_files(data_source_1,data_source_2):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '--data_source_1', help="The URI for you CSV data, like an S3 bucket location.")
+        '--data_source_1', help="The URI for your input CSV data, like an S3 bucket location.")
     parser.add_argument(
-        '--data_source_2', help="The URI for you CSV data, like an S3 bucket location.")
+        '--data_source_2', help="The URI for your input CSV data, like an S3 bucket location.")
     parser.add_argument(
         '--output_uri', help="The URI where output is saved, like an S3 bucket location.")
     args = parser.parse_args()
     
 
     merge_two_files(args.data_source_1, args.data_source_2)
+
 
