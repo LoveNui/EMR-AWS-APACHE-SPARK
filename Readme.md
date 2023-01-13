@@ -79,7 +79,7 @@ def merge_two_files(data_source_1,data_source_2,output_uri):
     
     Usage 
     
-    !spark-submit analysis.py --data_source_1 x_list.txt --data_source_2 y_list.txt --output_uri  fullpath/of/the/output/folder/to/save/result
+    !spark-submit analysis.py --data_source_1 x_list.txt --data_source_2 y_list.txt --output_uri /uri/output/folder/to/store/results
     
     for example /Users/johnpaulbabu/Documents/pyspark/output
     """
@@ -102,7 +102,7 @@ def merge_two_files(data_source_1,data_source_2,output_uri):
     res = x.join(y, x.ID_x == y.ID_y, how= "left")
     res1 = res.drop(res.ID_y)
     res1.show()
-    res1.write.mode("overwrite").parquet(output_uri)
+    res1.write.option("header", "true").mode("overwrite").csv(output_uri)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -116,7 +116,6 @@ if __name__ == "__main__":
     
 
     merge_two_files(args.data_source_1, args.data_source_2,args.output_uri)
-
 ```
 
 ### **Advantanges**
