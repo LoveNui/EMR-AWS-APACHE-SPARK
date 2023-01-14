@@ -1,5 +1,5 @@
  
-# **Executing an existing python script on aws cloud for big data analytics.**
+# **Executing a python script on aws cloud for big data analytics.**
  
 ## **Use Case**
 Our use case focuses on a data scientist who just finished the attached Python script, with a view to run it on very large files (e.g. billions of rows).The data scientist needed help to package it up into a pipeline to run at scale on the cloud.
