@@ -8,10 +8,10 @@ We will be deploying a python script which reads two files and joins them into o
  
  
 ![EMR WORKFLOW](images/emr-workflow.png)
-Figure 1: EMR workflow
+Figure 1: [EMR workflow](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs.html)
  
  
-### Step 1 : Creating an S3 bucket. (https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
+### Step 1 : [Creating an S3 bucket.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
  
 Using the S3 console
 Sign in to the AWS Management Console with your username and password and open the Amazon S3 console at https://console.aws.amazon.com/s3/.
