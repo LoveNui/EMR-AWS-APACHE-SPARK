@@ -185,8 +185,8 @@ chmod 400 filepath/key-pair-name.pem
  
  
  
-   --data_source-1 s3://DOC-EXAMPLE-BUCKET/DATA_SOURCE/x_list.txt
-   --data_source-2 s3://DOC-EXAMPLE-BUCKET/DATA_SOURCE/y_list.txt
+   --data_source_1 s3://DOC-EXAMPLE-BUCKET/DATA_SOURCE/x_list.txt
+   --data_source_2 s3://DOC-EXAMPLE-BUCKET/DATA_SOURCE/y_list.txt
    --output_uri s3://DOC-EXAMPLE-BUCKET/OutputFolder
  
    Replace s3://DOC-EXAMPLE-BUCKET/DATA_SOURCE/x_list.txt and  s3://DOC-EXAMPLE-BUCKET/DATA_SOURCE/y_list.txt with the S3 bucket URI of your input data in amazon s3.
