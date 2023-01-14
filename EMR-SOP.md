@@ -249,7 +249,7 @@ spark-submit analysis.py --data_source_1 <path in s3 bucket > --data_source_2 < 
 ````
 
 
-### Step 6: View results
+### Step 7: View results
  
 After a step runs successfully, you can view its output results in your Amazon S3 output folder.
  
@@ -271,7 +271,7 @@ After a step runs successfully, you can view its output results in your Amazon S
 
 ## Cleanup
  
-### Step 7: Clean up your Amazon EMR resources by Terminating your cluster
+### Step 8: Clean up your Amazon EMR resources by Terminating your cluster
  
 Now that you've submitted work to your cluster and viewed the results of your PySpark application, you can terminate the cluster. The cluster also gets terminated automatically if inactive for the time we set during cluster creation. When you terminate a cluster, Amazon EMR retains metadata about the cluster for two months at no charge. Archived metadata helps you clone the cluster for a new job or revisit the cluster configuration for reference purposes. Metadata does not include data that the cluster writes to S3, or data stored in HDFS on the cluster.
  
@@ -284,7 +284,7 @@ Now that you've submitted work to your cluster and viewed the results of your Py
 3. Choose Terminate in the dialog box. Depending on the cluster configuration, termination may take 5 to 10
   minutes. For more information on how to Amazon EMR clusters, see Terminate a cluster.
  
-### Step 8: Delete S3 resources
+### Step 9: Delete S3 resources
 To avoid additional charges, you should delete your Amazon S3 bucket. Deleting the bucket removes all of the Amazon S3 resources for this tutorial. Your bucket should contain:
  
 1. The PySpark script
