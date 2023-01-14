@@ -44,7 +44,7 @@ if __name__ == "__main__":
  
 ## **Data processing in [amazon EMR](https://aws.amazon.com/emr/) with [apache spark](https://aws.amazon.com/big-data/what-is-spark/) with data in [amazon S3 bucket](https://aws.amazon.com/s3/).**
  
-Apache Spark is an open-source, distributed processing system used for big data workloads. It utilizes in-memory caching, and optimized query execution for fast analytic queries against data of any size. Amazon EMR is the industry-leading cloud big data platform for data processing, interactive analysis, and machine learning using open source frameworks such as Apache Spark.
+Apache Spark is an open-source, distributed processing system used for big data workloads. It utilizes in-memory caching, and optimized query execution for fast analytic queries against data of any size. Amazon EMR is a managed service aws cloud service for big data processing, interactive analysis, and machine learning using open source frameworks such as Apache Spark.
  
 The main parts of this architecture discussed here is in (Figure 1):
  
@@ -119,8 +119,8 @@ To test this script in a local machine please download the python-pyspark folder
 ### **Advantages of EMR**
 * Updated with latest open source frameworks.
 * Cost savings especially if we use spot instances or reserved instances for big data.
-* fully managed no cluster setup. 
-* use s3 storage.
+* Fully managed no cluster setup. 
+* Use s3 storage.
 * Different hardware choices.
 * Code Deployment is easy.
 * Integration with other AWS services.
@@ -141,10 +141,12 @@ To test this script in a local machine please download the python-pyspark folder
  
 ### **Conclusion**
  
-AWS EMR has many advantages when it comes to big data processing as it uses Apache spark with distributed systems. AWS EMR is a good solution for our use case. To know the detailed process of deploying the above python script in amazon EMR. 
+AWS EMR has many advantages when it comes to big data processing as it uses Apache spark with distributed systems. AWS EMR is a good solution for our use case. Meanwhile if we do not need customization and control of the clusters, Amazon EMR offers a serverless option named [amazon EMR serverless](https://aws.amazon.com/emr/serverless/). Using amazon EMR serverless we do not need to tune, operate, secure, optimize and manage the cluster. EMR serverless automatically provisions and scales  compute and memory resources required by applications. Customers only pay for the resources they use. EMR serverless is a more simplest  way for customers to run applications built using open source big data analytics frameworks in the cloud. 
+
+To know the detailed process of deploying the above python script in amazon EMR.
 ### [**Please click here for an EMR SOP**](/EMR-SOP.md).
  
-## **Solution 3: Data processing in [amazon EMR serverless](https://aws.amazon.com/emr/serverless/) with [apache spark](https://aws.amazon.com/big-data/what-is-spark/) with data in [amazon S3 bucket](https://aws.amazon.com/s3/).**
+
  
  
 ## How would you set up the company’s cloud account to run pipelines securely and robustly?
