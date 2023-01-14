@@ -48,11 +48,11 @@ Sign in to the AWS Management Console with your username and password and open t
  
 16. Choose Upload.
  
-You've successfully uploaded files to your bucket. Note: The maximum size of a file that you can upload by using the Amazon S3 console is 160 GB. To upload a file larger than 160 GB, use the AWS CLI, AWS SDK, or Amazon S3 REST API.
+You've successfully uploaded files to your bucket. Note: The maximum size of a file that you can upload by using the Amazon S3 console is 160 GB. To upload a file larger than 160 GB, use the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html), AWS SDK, or Amazon S3 REST API.
  
 ## Step 2: PySpark script for EMR
  
-1. Copy the example code below into a new file in your editor of choice.
+1. Copy the example code below into a new file in your editor of choice as save as analysis.py or you can find the file in the [python-pandas](/python-pyspark) folder named [analysis.py](/python-pyspark/analysis.py)
  
  
 ```python
@@ -104,8 +104,7 @@ if __name__ == "__main__":
  
    merge_two_files(args.data_source_1, args.data_source_2,args.output_uri)
 ```
-2. Save the file as analysis.py
-3. Upload analysis.py to Amazon S3 into the bucket you created for this tutorial.
+2. Upload analysis.py to Amazon S3 into the bucket you created for this tutorial.
  
 ### Step 3: [Create EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html)
  
@@ -253,7 +252,7 @@ Now that you've submitted work to your cluster and viewed the results of your Py
 3. Choose Terminate in the dialog box. Depending on the cluster configuration, termination may take 5 to 10
   minutes. For more information on how to Amazon EMR clusters, see Terminate a cluster.
  
-## Step 8: Delete S3 resources
+### Step 8: Delete S3 resources
 To avoid additional charges, you should delete your Amazon S3 bucket. Deleting the bucket removes all of the Amazon S3 resources for this tutorial. Your bucket should contain:
  
 1. The PySpark script
