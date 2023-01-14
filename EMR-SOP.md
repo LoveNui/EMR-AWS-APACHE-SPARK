@@ -10,7 +10,8 @@ We will be deploying a python script which reads two files and joins them into o
 ![EMR WORKFLOW](images/emr-workflow.png)
 Figure 1: [EMR workflow](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs.html)
  
- 
+## Planning and configure
+
 ### Step 1 : [Creating an S3 bucket.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
  
 Using the S3 console
@@ -153,6 +154,8 @@ chmod 400 filepath/key-pair-name.pem
  
 9. Find the cluster Status next to the cluster name. The status changes from Starting to Running to Waiting
   as Amazon EMR provisions the cluster. You may need to choose the refresh icon on the right or refresh your browser to see status updates.
+
+## Manage
  
 ### Step 5: Submit work to Amazon EMR
  
@@ -234,7 +237,8 @@ After a step runs successfully, you can view its output results in your Amazon S
 5. Open the results in your editor of choice. The output file lists the top ten food establishments with the most red violations. The output file also shows the total number of red violations for each establishment.
  
 6. The following is an example of analysis.py results.
- 
+
+## Cleanup
  
 ### Step 7: Clean up your Amazon EMR resources by Terminating your cluster
  
