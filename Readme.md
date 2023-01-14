@@ -74,7 +74,8 @@ def merge_two_files(data_source_1,data_source_2,output_uri):
   
    Usage
   
-   !spark-submit analysis.py --data_source_1 x_list.txt --data_source_2 y_list.txt --output_uri /uri/output/folder/to/store/results
+   !spark-submit analysis.py --data_source_1 x_list.txt --data_source_2 y_list.txt 
+   --output_uri /uri/output/folder/to/store/results
   
    for example /Users/johnpaulbabu/Documents/pyspark/output
    """
