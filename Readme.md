@@ -141,16 +141,21 @@ To test this script in a local machine please download the python-pyspark folder
  
 ### **Conclusion**
  
-AWS EMR has many advantages when it comes to big data processing as it uses Apache spark with distributed systems. AWS EMR is a good solution for our use case. Meanwhile if we do not need customization and control of the clusters, Amazon EMR offers a serverless option named [amazon EMR serverless](https://aws.amazon.com/emr/serverless/). Using amazon EMR serverless we do not need to tune, operate, secure, optimize and manage the cluster. EMR serverless automatically provisions and scales  compute and memory resources required by applications. Customers only pay for the resources they use. EMR serverless is a more simplest  way for customers to run applications built using open source big data analytics frameworks in the cloud. 
+AWS EMR has many advantages when it comes to big data processing as it uses Apache spark with distributed systems. AWS EMR is a good solution for our use case. Meanwhile if we do not need customization and control of the clusters, Amazon EMR offers a serverless option named [Amazon EMR serverless](https://aws.amazon.com/emr/serverless/). Using amazon EMR serverless we do not need to tune, operate, secure, optimize and manage the cluster. EMR serverless automatically provisions and scales  compute and memory resources required by applications. Customers only pay for the resources they use. EMR serverless is a more simplest  way for customers to run applications built using open source big data analytics frameworks in the cloud. 
 
-To know the detailed process of deploying the above python script in amazon EMR.
+To know the detailed process of deploying the above [python script](/python-pyspark/analysis.py) in amazon EMR.
 ### [**Please click here for an EMR SOP**](/EMR-SOP.md).
  
 
  
  
 ## How would you set up the company’s cloud account to run pipelines securely and robustly?
- 
- 
- 
+
+1. Encrypting data at rest  
+2. Encryption of data in transit
+3. Network security, Amazon EMR clusters in private subnets, and use NAT to perform only outbound internet access.
+4. Managing Identity and Access. Creating different users and user groups and creating permission policy 
+5. Multi account for production and development 
+6. Error handeling 
+7. Scalability
 
