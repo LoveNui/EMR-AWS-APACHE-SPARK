@@ -230,7 +230,8 @@ chmod 400 filepath/key-pair-name.pem
 
    vi analysis.py 
 
-   ```in the terminal and click enter. 
+   ```
+   in the terminal to create a python file named analysis.py and click enter. 
 
 14. Type i to edit. 
 15. Copy and paste the python script from the file [analysis.py]() to the terminal editor. 
