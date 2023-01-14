@@ -158,11 +158,12 @@ chmod 400 filepath/key-pair-name.pem
 ## Manage
  
 ### Step 5: Submit work to Amazon EMR
- 
+
+**Note we can also do this step to submit the code through ssh from the local machine to know more refer step 6 below.** 
  
 1. Under EMR on EC2 in the left navigation pane, choose Clusters, and then select the cluster where you want to submit work. The cluster state must be Waiting.
 
-**Note we can also do this step to submit the code through ssh method to know more refer step 6 below.** 
+
  
 2. Choose the Steps tab, and then choose Add step.
  
