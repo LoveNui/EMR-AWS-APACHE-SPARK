@@ -158,4 +158,6 @@ To know the detailed process of deploying the above [python script](/python-pysp
 5. Multi account for production and development 
 6. Error handeling 
 7. Scalability
+8. Backups and snapshots
+
 
