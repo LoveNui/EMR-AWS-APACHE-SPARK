@@ -53,14 +53,14 @@ Figure 1. Data pipeline for running a python script on AWS EMR
  
 1. A data source [amazon S3](https://aws.amazon.com/s3/) is where data files and python scripts are uploaded.
  
-2. A data processing solution [AWS EMR](https://aws.amazon.com/emr/) where the above python script is executed. [AWS EMR](https://aws.amazon.com/emr/) (Elastic Map reduce) is a big data on demand server. It is preconfigured with spark hadoop etc. It has a master node and ec2 instances as worker nodes. We can scale up the ec2 instances as our requirements.
+2. A data processing solution [AWS EMR](https://aws.amazon.com/emr/) where the above python script is executed. [AWS EMR](https://aws.amazon.com/emr/) (Elastic Map reduce) is a big data on demand server. It is preconfigured with spark hadoop etc. It has a master node and ec2 instances as worker nodes. The ec2 instances can be autoscaled. 
 
 3. A s3 bucket to save the AWS EMR logs. The same data souce s3 bucket as in 1 can also be used to save the
    AWS EMR logs.  
  
 ### **Prepare the above python script for EMR**
  
-The above python script is written using the pandas library and pandas has a disadvantage, pandas run operations on a single machine. In this solution  Apache Spark is used. Apache Spark in an EMR cluster with multiple scalable EC2 machines. Inorder to make the python script optimized with Apache Spark, the script needed to be rewritten using Pyspark. Pyspark is an open source python API for Apache Spark to process large datasets in distributed system. PySpark is an ideal fit for our use case with big data as it processes operations many times(100x) faster than Pandas. I have also added a script to save the output.
+The above python script is written using the open source [pandas](https://pandas.pydata.org/) python package and pandas has a disadvantage, pandas run operations on a single machine. In this solution  [Apache Spark](https://spark.apache.org/) is used. Apache Spark in an EMR cluster with multiple scalable EC2 machines. Inorder to make the python script optimized with Apache Spark, the script needed to be rewritten using Pyspark. Pyspark is an open source python API for Apache Spark to process large datasets in distributed system. PySpark is an ideal fit for this use case with big data as it processes operations many times(100x) faster than Pandas. I have also added a script to save the output.
  
 ```python
  
@@ -129,12 +129,12 @@ if __name__ == "__main__":
 * Its ideal only for big data.
 * Manually deploy and start the EMR clusters.
 * We can set the ec2 instance termination periods but if our task execution completes before the termination
- period we will have to manually terminate the instances to save cost.
+  period we will have to manually terminate the instances to save cost.
  
  
 ### **Conclusion**
  
-AWS EMR has many advantages when it comes to big data processing as it uses Apache spark with distributed systems.AWS EMR is a good solution for our use case. To know the detailed process of deploying the above python script in amazon EMR. 
+AWS EMR has many advantages when it comes to big data processing as it uses Apache spark with distributed systems. AWS EMR is a good solution for our use case. To know the detailed process of deploying the above python script in amazon EMR. 
 ### [**Please click here for an EMR SOP**](/EMR-SOP.md).
  
 ## **Solution 3: Data processing in [amazon EMR serverless](https://aws.amazon.com/emr/serverless/) with [apache spark](https://aws.amazon.com/big-data/what-is-spark/) with data in [amazon S3 bucket](https://aws.amazon.com/s3/).**
