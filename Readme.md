@@ -1,5 +1,5 @@
  
-# **Executing an existing python script on aws cloud for data analytics.**
+# **Executing an existing python script on aws cloud for big data analytics.**
  
 ## **Use Case**
 Our use case focuses on a data scientist who just finished the attached Python script, with a view to run it on very large files (e.g. billions of rows).The data scientist needed help to package it up into a pipeline to run at scale on the cloud.
@@ -57,7 +57,7 @@ Figure 1. Data pipeline for running a python script on AWS EMR
  
 ### **Prepare the above python script for EMR**
  
-The above python script is written using the pandas library and pandas has a disadvantage, pandas run operations on a single machine. In this solution  Apache Spark is used. Apache Spark in an EMR cluster with multiple scalable EC2 machines. Inorder to make the python script optimized with Apache Spark, the script needed to be rewritten using Pyspark. Pyspark is an open source python API for Apache Spark to process large datasets in distributed system. PySpark is an ideal fit for our use case with big data as it processes operations many times(100x) faster than Pandas.I have also added a script to save the output.
+The above python script is written using the pandas library and pandas has a disadvantage, pandas run operations on a single machine. In this solution  Apache Spark is used. Apache Spark in an EMR cluster with multiple scalable EC2 machines. Inorder to make the python script optimized with Apache Spark, the script needed to be rewritten using Pyspark. Pyspark is an open source python API for Apache Spark to process large datasets in distributed system. PySpark is an ideal fit for our use case with big data as it processes operations many times(100x) faster than Pandas. I have also added a script to save the output.
  
 ```python
  
@@ -122,7 +122,7 @@ if __name__ == "__main__":
  
  
  
-### ***Disadvantages of EMR**
+### **Disadvantages of EMR**
 * Its ideal only for big data.
 * Manually deploy and start the EMR clusters.
 * We can set the ec2 instance termination periods but if our task execution completes before the termination
