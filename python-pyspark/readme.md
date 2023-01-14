@@ -44,3 +44,4 @@ Terminal output
 
 ```
 
+5. Results: Ouput file will be in the outputFolder along with a _SUCESSS file. 
