@@ -46,14 +46,17 @@ if __name__ == "__main__":
  
 Apache Spark is an open-source, distributed processing system used for big data workloads. It utilizes in-memory caching, and optimized query execution for fast analytic queries against data of any size. Amazon EMR is the industry-leading cloud big data platform for data processing, interactive analysis, and machine learning using open source frameworks such as Apache Spark.
  
-The main parts of this architecture we discuss are (Figure 1):
+The main parts of this architecture discussed here is in (Figure 1):
  
 ![architecture2](images/Architecture-EMR-S3.png)
 Figure 1. Data pipeline for running a python script on AWS EMR
  
-1. A data source [amazon S3](https://aws.amazon.com/s3/) is where data files are uploaded.
+1. A data source [amazon S3](https://aws.amazon.com/s3/) is where data files and python scripts are uploaded.
  
 2. A data processing solution [AWS EMR](https://aws.amazon.com/emr/) where the above python script is executed. [AWS EMR](https://aws.amazon.com/emr/) (Elastic Map reduce) is a big data on demand server. It is preconfigured with spark hadoop etc. It has a master node and ec2 instances as worker nodes. We can scale up the ec2 instances as our requirements.
+
+3. A s3 bucket to save the AWS EMR logs. The same data souce s3 bucket as in 1 can also be used to save the
+   AWS EMR logs.  
  
 ### **Prepare the above python script for EMR**
  
