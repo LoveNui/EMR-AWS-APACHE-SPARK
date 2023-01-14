@@ -37,7 +37,7 @@ Sign in to the AWS Management Console with your username and password and open t
  
 11. Click on the bucket name to go the bucket
  
-12. Click create folder and create two folders DATA_SOURCE and DATA_OUTPUT
+12. Click create folder and create two folders DATA_SOURCE, DATA_OUTPUT and LOGS
  
 13. Choose the DATA_SOURCE folder and choose Upload
  
@@ -146,7 +146,7 @@ chmod 400 filepath/key-pair-name.pem
  
 5. Under Applications, choose the Spark option to install Spark on your cluster.
  
-6. Under Cluster logs, select the Publish cluster-specific logs to Amazon S3 check box. Replace the Amazon S3 location value with the Amazon S3 bucket you created, followed by /logs. For example, s3://DOC-EXAMPLE-BUCKET/logs. Adding /logs creates a new folder called 'logs' in your bucket, where Amazon EMR can copy the log files of your cluster.
+6. Under Cluster logs, select the Publish cluster-specific logs to Amazon S3 check box. Replace the Amazon S3 location value with the Amazon S3 bucket folder you created. /LOGS. For example, s3://DOC-EXAMPLE-BUCKET/LOGS, where Amazon EMR can copy the log files of your cluster.
  
 7. Under Security configuration and permissions, choose your EC2 key pair. In the same section, select the Service role for Amazon EMR dropdown menu and choose EMR_DefaultRole. Then, select the IAM role for instance profile dropdown menu and choose EMR_EC2_DefaultRole.
  

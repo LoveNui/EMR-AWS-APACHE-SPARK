@@ -117,13 +117,17 @@ if __name__ == "__main__":
 To test this script in a local machine please download the python-pyspark folder and follw the instructions in the [readme.md](/python-pyspark/readme.md) file in it. 
  
 ### **Advantages of EMR**
-* Cost savings especially if we use spot instances for big data.
+* Updated with latest open source frameworks.
+* Cost savings especially if we use spot instances or reserved instances for big data.
+* fully managed no cluster setup. 
+* use s3 storage.
+* Different hardware choices.
 * Code Deployment is easy.
-* Integration with other AWS services
-* Scalability and flexibility
-* Reliability
-* Security
-* Monitoring
+* Integration with other AWS services.
+* Long running and auto scaling.
+* Reliability.
+* Security.
+* Monitoring.
 * No data file size limit and no maximum run time like lamda function.
  
  
