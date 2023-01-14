@@ -212,7 +212,6 @@ chmod 400 filepath/key-pair-name.pem
 7. For source, select My IP to automatically add your IP address as the source address and click save rule.
 6. Go back to the cluster page and click the link to connect to a master node using ssh.
 7. This will open a link with instructions to ssh into the EMR cluster
-![ssh emr cluster](images/ssh-emr.png)
 8. Open the terminal
 9. Type the following command. Replace ec2-###-##-##-###.compute-1.amazonaws.com with the master public DNS
   name of your cluster and replace ~/mykeypair.pem with the full path and file name of your .pem file.
