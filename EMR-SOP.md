@@ -37,8 +37,8 @@ Sign in to the AWS Management Console with your username and password and open t
  
 11. Click on the bucket name to go the bucket
  
-12. Click create folder and create two folders DATA_SOURCE, DATA_OUTPUT and LOGS
- 
+12. Click create folder and create four folders DATA_SOURCE, DATA_OUTPUT, LOGS and PYTHON_SCRIPT
+ ![folder s3](images/s3-folder.png)
 13. Choose the DATA_SOURCE folder and choose Upload
  
 14. Under Files and folders, choose Add files.
@@ -104,8 +104,7 @@ if __name__ == "__main__":
  
    merge_two_files(args.data_source_1, args.data_source_2,args.output_uri)
 ```
-2. Upload analysis.py to Amazon S3 into the bucket you created for this tutorial. You can also create a new 
-   folder named PYTHON_SCRIPTS in s3 bucket and upload the analysis.py into it. 
+2. Upload analysis.py to PYTHON_SCRIPTS folder in Amazon S3 into the bucket you created for this tutorial. 
  
 ### Step 3: [Create EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html)
  
@@ -163,7 +162,6 @@ chmod 400 filepath/key-pair-name.pem
  
 1. Under EMR on EC2 in the left navigation pane, choose Clusters, and then select the cluster where you want to submit work. The cluster state must be Waiting.
 
-
  
 2. Choose the Steps tab, and then choose Add step.
  
@@ -177,7 +175,7 @@ chmod 400 filepath/key-pair-name.pem
 6. For Deploy mode, leave the default value Cluster mode.
  
 7. For Application location, enter the uri of the amazon s3 location of your analysis.py script in Amazon S3,
-  such as s3://DOC-EXAMPLE-BUCKET/analysis.py.
+  such as s3://DOC-EXAMPLE-BUCKET/PYTHON_SCRIPTS/analysis.py.
  
 8. Leave the Spark-submit options field empty.
  
@@ -194,6 +192,7 @@ chmod 400 filepath/key-pair-name.pem
     Replace DOC-EXAMPLE-BUCKET with the name of the bucket that you created for this tutorial, and replace OutputFolder with a name for your cluster output folder.
  
 10. For Action if step fails, accept the default option Continue. This way, if the step fails, the cluster continues to run.
+![steps](/images/add-step.png)
  
 11. Choose Add to submit the step. The step should appear in the console with a status of Pending.
  
@@ -268,6 +267,8 @@ After a step runs successfully, you can view its output results in your Amazon S
 5. Open the results in your editor of choice. The output file lists the top ten food establishments with the most red violations. The output file also shows the total number of red violations for each establishment.
  
 6. The following is an example of analysis.py results.
+
+![data_output](/images/data_output.png)
 
 ## Cleanup
  
