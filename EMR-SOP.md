@@ -105,7 +105,7 @@ if __name__ == "__main__":
    merge_two_files(args.data_source_1, args.data_source_2,args.output_uri)
 ```
 2. Upload analysis.py to Amazon S3 into the bucket you created for this tutorial. You can also create a new 
-   folder named python-scripts in s3 bucket and upload the analysis.py into it. 
+   folder named python_scripts in s3 bucket and upload the analysis.py into it. 
  
 ### Step 3: [Create EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html)
  
