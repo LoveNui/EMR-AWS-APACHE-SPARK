@@ -57,7 +57,7 @@ Figure 1. Data pipeline for running a python script on AWS EMR
  
 ### **Prepare the above python script for EMR**
  
-The above python script is written using the pandas library and pandas has a disadvantage: pandas run operations on a single machine. In this solution since we are using Apache Spark in an EMR cluster with multiple machines so we need to rewrite the python script with PySpark. PySpark is an ideal fit for our use case with big data as it processes operations many times(100x) faster than Pandas.I have also added a script to save the output.
+The above python script is written using the pandas library and pandas has a disadvantage, pandas run operations on a single machine. In this solution  Apache Spark is used. Apache Spark in an EMR cluster with multiple scalable EC2 machines. Inorder to make the python script optimized with Apache Spark, the script needed to be rewritten using Pyspark. Pyspark is an open source python API for Apache Spark to process large datasets in distributed system. PySpark is an ideal fit for our use case with big data as it processes operations many times(100x) faster than Pandas.I have also added a script to save the output.
  
 ```python
  
@@ -110,7 +110,7 @@ if __name__ == "__main__":
    merge_two_files(args.data_source_1, args.data_source_2,args.output_uri)
 ```
  
-### **Advantages**
+### **Advantages of EMR**
 * Cost savings especially if we use spot instances for big data.
 * Code Deployment is easy.
 * Integration with other AWS services
@@ -122,7 +122,7 @@ if __name__ == "__main__":
  
  
  
-### ***Disadvantages**
+### ***Disadvantages of EMR**
 * Its ideal only for big data.
 * Manually deploy and start the EMR clusters.
 * We can set the ec2 instance termination periods but if our task execution completes before the termination
@@ -131,9 +131,8 @@ if __name__ == "__main__":
  
 ### **Conclusion**
  
-AWS EMR has many advantages when it comes to big data processing as it uses Apache spark with distributed systems. It has some disadvantages also as it's not completely severless and we will have to manually start and stop the clusters. AWS EMR is a good solution for our use case.
- 
-### [**Click here for an EMR SOP**](/EMR-SOP.md).
+AWS EMR has many advantages when it comes to big data processing as it uses Apache spark with distributed systems.AWS EMR is a good solution for our use case. To know the detailed process of deploying the above python script in amazon EMR. 
+### [**Please click here for an EMR SOP**](/EMR-SOP.md).
  
 ## **Solution 3: Data processing in [amazon EMR serverless](https://aws.amazon.com/emr/serverless/) with [apache spark](https://aws.amazon.com/big-data/what-is-spark/) with data in [amazon S3 bucket](https://aws.amazon.com/s3/).**
  
