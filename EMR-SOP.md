@@ -52,7 +52,7 @@ You've successfully uploaded files to your bucket. Note: The maximum size of a f
  
 ## Step 2: PySpark script for EMR
  
-1. Copy the example code below into a new file in your editor of choice as save as analysis.py or you can find the file in the [python-pandas](/python-pyspark) folder named [analysis.py](/python-pyspark/analysis.py)
+1. Copy the example code below into a new file in your editor of choice and save as analysis.py or you can find the file in the [python-pandas](/python-pyspark) folder named [analysis.py](/python-pyspark/analysis.py).
  
  
 ```python
@@ -104,7 +104,8 @@ if __name__ == "__main__":
  
    merge_two_files(args.data_source_1, args.data_source_2,args.output_uri)
 ```
-2. Upload analysis.py to Amazon S3 into the bucket you created for this tutorial.
+2. Upload analysis.py to Amazon S3 into the bucket you created for this tutorial. You can also create a new 
+   folder named python-scripts in s3 bucket and upload the analysis.py into it. 
  
 ### Step 3: [Create EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html)
  
@@ -124,7 +125,7 @@ if __name__ == "__main__":
  
 8. The private key file is automatically downloaded by your browser. The base file name is the name that you specified as the name of your key pair, and the file name with extension .pem. Save the private key file in a safe place.
  
-9. Change the file permission of the key pair by chmod 400 and the file path where the key is stored.
+9. Change the file permission of the key pair by chmod 400 by providing the file path where the key is stored.
  
 ```shellcommand
  
@@ -160,6 +161,8 @@ chmod 400 filepath/key-pair-name.pem
  
  
 1. Under EMR on EC2 in the left navigation pane, choose Clusters, and then select the cluster where you want to submit work. The cluster state must be Waiting.
+
+**Note we can also do this step to submit the code through ssh method to know more refer step 6 below.** 
  
 2. Choose the Steps tab, and then choose Add step.
  
@@ -218,7 +221,34 @@ chmod 400 filepath/key-pair-name.pem
 ```
 10. There is a bug in the amazon documentation, do not put  ~ in front of the .pem ec2 key pair path.
 11. Remember to change the permission of the ec2 key pair key to Chmod 400.
- 
+12. Than using Step 6 above to submit work, you can also submit the code to the amazon EMR through ssh. 
+13. Type 
+
+
+   ```shellcommand 
+
+   vi analysis.py 
+
+   ```in the terminal and click enter. 
+
+14. Type i to edit. 
+15. Copy and paste the python script from the file [analysis.py]() to the terminal editor. 
+16. Click escape and type 
+```shellcommand
+:wq
+
+````
+to save the file 
+
+17. Type the command by replacing the <path in s3 bucket > with the respective s3 bucket uri. 
+
+```shellcommand
+
+spark-submit analysis.py --data_source_1 <path in s3 bucket > --data_source_2 < path in s3 bucket >  --output_uri <path in s3 bucket>
+
+````
+
+
 ### Step 6: View results
  
 After a step runs successfully, you can view its output results in your Amazon S3 output folder.
