@@ -60,7 +60,7 @@ Figure 1. Data pipeline for running a python script on AWS EMR
  
 ### **Prepare the above python script for EMR**
  
-The above python script is written using the open source [pandas](https://pandas.pydata.org/) python package and pandas has a disadvantage, pandas run operations on a single machine. In this solution  [Apache Spark](https://spark.apache.org/) is used. Apache Spark in an EMR cluster with multiple scalable EC2 machines. Inorder to make the python script optimized with Apache Spark, the script needed to be rewritten using Pyspark. Pyspark is an open source python API for Apache Spark to process large datasets in distributed system. PySpark is an ideal fit for this use case with big data as it processes operations many times(100x) faster than Pandas. I have also added a script to save the output.
+The above python script is written using the open source [pandas](https://pandas.pydata.org/) python package and pandas has a disadvantage, pandas run operations on a single machine. In this solution  [Apache Spark](https://spark.apache.org/) is used. Apache Spark in an EMR cluster with multiple scalable EC2 machines. Inorder to make the python script optimized with Apache Spark, the script needed to be rewritten using Pyspark. [Pyspark](https://spark.apache.org/docs/latest/api/python/) is an open source python API for Apache Spark to process large datasets in distributed system. PySpark is an ideal fit for this use case with big data as it processes operations many times(100x) faster than Pandas. I have also added a script to save the output.
  
 ```python
  
@@ -113,6 +113,8 @@ if __name__ == "__main__":
  
    merge_two_files(args.data_source_1, args.data_source_2,args.output_uri)
 ```
+
+To test this script in a local machine please download the python-pyspark folder and follw the instructions in the [readme.md](/python-pyspark/readme.md) file in it. 
  
 ### **Advantages of EMR**
 * Cost savings especially if we use spot instances for big data.
