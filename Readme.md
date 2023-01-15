@@ -151,13 +151,23 @@ To know the detailed process of deploying the above [python script](/python-pysp
  
 ## How would you set up the company’s cloud account to run pipelines securely and robustly?
 
-1. Encrypting data at rest  
-2. Encryption of data in transit
-3. Network security, Amazon EMR clusters in private subnets, and use NAT to perform only outbound internet access.
-4. Managing Identity and Access. Creating different users and user groups and creating permission policy 
-5. Multi account for production and development 
-6. Error handeling 
-7. Scalability
-8. Backups and snapshots
+1. Encrypting data at rest. 
+2. Encrypting data in transit.
+3. Network security, clusters in private subnets, and NAT to perform
+   only outbound internet access.
+4. Managing Identity and Access.Creating different users and user groups and creating
+   permission policy. 
+5. Forcing multifactor authentication with each account.
+6. SSL/TLS to communicate with AWS resources. 
+7. Advanced managed security services such as Amazon Macie, which assists
+    in discovering and securing sensitive data that is stored in Amazon S3. 
+8. Periodic [security auditing](https://docs.aws.amazon.com/general/latest/gr/
+aws-security-audit-guide.html). 
+9. Multi accounts for example production and development. 
+10. Error handling.
+11. Scalability.
+12. Backups and snapshots.
+ 
+
 
 
