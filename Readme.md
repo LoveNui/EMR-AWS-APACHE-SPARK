@@ -134,6 +134,9 @@ if __name__ == "__main__":
 
 To test this script in a local machine please download the python-pyspark folder and follw the instructions in the [readme.md](/python-pyspark/readme.md) file in it. 
 
+To know the detailed process of deploying the above [python script](/python-pyspark/analysis.py) in amazon EMR.
+### [**Please click here for an EMR SOP**](/EMR-SOP.md).
+
 
  
 ### **Advantages of EMR**
@@ -162,11 +165,6 @@ To test this script in a local machine please download the python-pyspark folder
 ### **Conclusion**
  
 AWS EMR has many advantages when it comes to big data processing as it uses Apache spark with distributed systems. AWS EMR is a good solution for our use case. Meanwhile if we do not need customization and control of the clusters, Amazon EMR offers a serverless option named [Amazon EMR serverless](https://aws.amazon.com/emr/serverless/). Using amazon EMR serverless we do not need to tune, operate, secure, optimize and manage the cluster. EMR serverless automatically provisions and scales  compute and memory resources required by applications. Customers only pay for the resources they use. EMR serverless is a more simplest  way for customers to run applications built using open source big data analytics frameworks in the cloud. 
-
-To know the detailed process of deploying the above [python script](/python-pyspark/analysis.py) in amazon EMR.
-### [**Please click here for an EMR SOP**](/EMR-SOP.md).
- 
-
  
  
 ## How would you set up the company’s cloud account to run pipelines securely and robustly?
@@ -188,6 +186,8 @@ aws-security-audit-guide.html).
 11. Scalability.
 12. Backups and snapshots.
  
+
+### [**Please click here for an EMR SOP**](/EMR-SOP.md).
 
 
 
