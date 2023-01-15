@@ -12,7 +12,7 @@ Figure 1: [EMR workflow](https://docs.aws.amazon.com/emr/latest/ManagementGuide/
  
 ## Planning and configure
 
-### Step 1 : [Creating an S3 bucket.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
+## Step 1 : [Creating an S3 bucket.](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
  
 Using the S3 console
 Sign in to the AWS Management Console with your username and password and open the Amazon S3 console at https://console.aws.amazon.com/s3/.
@@ -106,7 +106,7 @@ if __name__ == "__main__":
 ```
 2. Upload analysis.py to PYTHON_SCRIPTS folder in Amazon S3 into the bucket you created for this tutorial. 
  
-### Step 3: [Create EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html)
+## Step 3: [Create EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html)
  
 1. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
  
@@ -132,7 +132,7 @@ chmod 400 filepath/key-pair-name.pem
  
 ```
  
-### Step 4: Launch an Amazon EMR cluster
+## Step 4: Launch an Amazon EMR cluster
  
  
 1. To launch an EMR cluster Sign in to the AWS Management Console, and open the Amazon EMR console at https://console.aws.amazon.com/emr/.
@@ -156,7 +156,7 @@ chmod 400 filepath/key-pair-name.pem
 
 ## Manage
  
-### Step 5: Submit work to Amazon EMR
+## Step 5: Submit work to Amazon EMR
 
 **Note we can also do this step to submit the code through ssh from the local machine to know more refer [step 6](#step-6-optional-connect-to-a-running-emr-cluster-to-read-log-files-and-debug-the-cluster) below.** 
  
@@ -198,7 +198,7 @@ chmod 400 filepath/key-pair-name.pem
  
 12. Monitor the step status. It should change from Pending to Running to Completed. To refresh the status in the console, choose the refresh icon to the right of Filter. The script takes about one minute to run. When the status changes to Completed, the step has completed successfully.
  
-### Step 6: (Optional) Connect to a running EMR cluster to read log files and debug the cluster
+## Step 6: (Optional) Connect to a running EMR cluster to read log files and debug the cluster
  
  
 1. Under EMR on EC2 in the left navigation pane, choose Clusters, and then choose the cluster you created.
@@ -249,7 +249,7 @@ spark-submit analysis.py --data_source_1 <path in s3 bucket > --data_source_2 < 
 ````
 
 
-### Step 7: View results
+## Step 7: View results
  
 After a step runs successfully, you can view its output results in your Amazon S3 output folder.
  
@@ -271,7 +271,7 @@ After a step runs successfully, you can view its output results in your Amazon S
 
 ## Cleanup
  
-### Step 8: Clean up your Amazon EMR resources by Terminating your cluster
+## Step 8: Clean up your Amazon EMR resources by Terminating your cluster
  
 Now that you've submitted work to your cluster and viewed the results of your PySpark application, you can terminate the cluster. The cluster also gets terminated automatically if inactive for the time we set during cluster creation. When you terminate a cluster, Amazon EMR retains metadata about the cluster for two months at no charge. Archived metadata helps you clone the cluster for a new job or revisit the cluster configuration for reference purposes. Metadata does not include data that the cluster writes to S3, or data stored in HDFS on the cluster.
  
@@ -284,7 +284,8 @@ Now that you've submitted work to your cluster and viewed the results of your Py
 3. Choose Terminate in the dialog box. Depending on the cluster configuration, termination may take 5 to 10
   minutes. For more information on how to Amazon EMR clusters, see Terminate a cluster.
  
-### Step 9: Delete S3 resources
+## Step 9: Delete S3 resources
+
 To avoid additional charges, you should delete your Amazon S3 bucket. Deleting the bucket removes all of the Amazon S3 resources for this tutorial. Your bucket should contain:
  
 1. The PySpark script
