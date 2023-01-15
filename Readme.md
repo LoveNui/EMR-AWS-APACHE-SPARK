@@ -42,7 +42,7 @@ if __name__ == "__main__":
 ## **Solutions overview**
  
  
-## **Data processing in [amazon EMR](https://aws.amazon.com/emr/) with [apache spark](https://aws.amazon.com/big-data/what-is-spark/) with data in [amazon S3 bucket](https://aws.amazon.com/s3/).**
+## **Data processing in [amazon EMR](https://aws.amazon.com/emr/) with [apache spark](https://aws.amazon.com/big-data/what-is-spark/) and data in [amazon S3 bucket](https://aws.amazon.com/s3/).**
  
 Apache Spark is an open-source, distributed processing system used for big data workloads. It utilizes in-memory caching, and optimized query execution for fast analytic queries against data of any size. Amazon EMR is a managed service aws cloud service for big data processing, interactive analysis, and machine learning using open source frameworks such as Apache Spark.
  
