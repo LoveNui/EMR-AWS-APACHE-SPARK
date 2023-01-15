@@ -114,7 +114,27 @@ if __name__ == "__main__":
    merge_two_files(args.data_source_1, args.data_source_2,args.output_uri)
 ```
 
+**Output**
+```shellscript
+
++----+-------+-------+
+|ID_x|value_x|value_y|
++----+-------+-------+
+|  ID|   Word|   droW|
+|   A|  Hello|  olleH|
+|   B|  World|  dlroW|
+|   C|    How|    woH|
+|   D|     Do|     oD|
+|   E|    You|    uoY|
+|   F|     Do|     oD|
+|   G|      ?|      ?|
++----+-------+-------+
+
+```
+
 To test this script in a local machine please download the python-pyspark folder and follw the instructions in the [readme.md](/python-pyspark/readme.md) file in it. 
+
+
  
 ### **Advantages of EMR**
 * Updated with latest open source frameworks.
