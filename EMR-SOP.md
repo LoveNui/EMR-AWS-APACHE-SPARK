@@ -104,6 +104,8 @@ if __name__ == "__main__":
  
    merge_two_files(args.data_source_1, args.data_source_2,args.output_uri)
 ```
+Note: To test this script in a local machine please download the python-pyspark folder and follw the instructions in the [readme.md](/python-pyspark/readme.md) file. 
+
 2. Upload analysis.py to PYTHON_SCRIPTS folder in Amazon S3 into the bucket you created for this tutorial. 
  
 ## Step 3: [Create EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html)
@@ -220,7 +222,7 @@ chmod 400 filepath/key-pair-name.pem
 ```
 10. There is a bug in the amazon documentation, do not put  ~ in front of the .pem ec2 key pair path.
 11. Remember to change the permission of the ec2 key pair key to Chmod 400.
-12. Than using Step 6 above to submit work, you can also submit the code to the amazon EMR through ssh. 
+12. Than using Step 5 above to submit work, you can also submit the code to the amazon EMR through ssh. 
 13. Type 
 
 
