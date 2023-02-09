@@ -170,6 +170,8 @@ AWS EMR has many advantages when it comes to big data processing as it uses Apac
 ![EMR serverless data pipeline architecture with CI/CD and local environment. ](/images/EMR-serverless-CI-CD-architecture.png)
 Figure 2: EMR serverless data pipeline architecture with CI/CD and local environment. 
 
+### [**Please click here for an EMR SOP**](/EMR-SOP.md).
+
  
 ## How would you set up the company’s cloud account to run pipelines securely and robustly?
 
@@ -190,8 +192,6 @@ aws-security-audit-guide.html).
 11. Scalability.
 12. Backups and snapshots.
  
-
-### [**Please click here for an EMR SOP**](/EMR-SOP.md).
 
 
 
