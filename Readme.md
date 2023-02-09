@@ -132,7 +132,7 @@ if __name__ == "__main__":
 
 ```
 
-To test this script in a local machine please download the python-pyspark folder and follw the instructions in the [readme.md](/python-pyspark/readme.md) file in it. 
+To test this script in a local machine please download the python-pyspark folder and follow the instructions in the [readme.md](/python-pyspark/readme.md) file in it. 
 
 To know the detailed process of deploying the above [python script](/python-pyspark/analysis.py) in amazon EMR.
 ### [**Please click here for an EMR SOP**](/EMR-SOP.md).
